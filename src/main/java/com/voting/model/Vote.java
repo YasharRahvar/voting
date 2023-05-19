@@ -13,10 +13,10 @@ public class Vote {
     private int voteId;
 
     @ManyToOne
-    private Person person;
-
+    private PlayPackage playPackage;
 
     @ManyToOne
-    private PlayPackage playPackage;
+    private Person person;
+
 
 }
