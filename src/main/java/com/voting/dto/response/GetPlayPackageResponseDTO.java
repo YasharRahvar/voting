@@ -9,4 +9,10 @@ import java.io.Serializable;
 public class GetPlayPackageResponseDTO implements Serializable {
     private int PlayPackageId;
     private Strategy strategy;
+
+    @Override
+    public String toString() {
+        return
+                "strategy: " + strategy;
+    }
 }

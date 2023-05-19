@@ -9,7 +9,6 @@ import com.voting.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,15 +47,8 @@ public class PersonController {
     @GetMapping(value = "message")
     public String getMessage() {
         LOGGER.info("message from controller");
+
         return message;
     }
-
-    @GetMapping("/name/{name}")
-    @Cacheable("azureCache")
-    public String getValue(@PathVariable String name) {
-        return "Hello " + name;
-    }
-
-
 
 }

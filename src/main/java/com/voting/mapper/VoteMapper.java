@@ -7,6 +7,9 @@ import com.voting.model.Vote;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class VoteMapper {
 
@@ -31,4 +34,5 @@ public class VoteMapper {
         GetVoteResponseDTO getVoteResponseDTO = mapper.map(vote, GetVoteResponseDTO.class);
         return getVoteResponseDTO;
     }
+
 }

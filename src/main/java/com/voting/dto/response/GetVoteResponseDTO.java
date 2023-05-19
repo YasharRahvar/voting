@@ -14,4 +14,13 @@ public class GetVoteResponseDTO implements Serializable {
     private Person person;
 
     private PlayPackage playPackage;
+
+    @Override
+    public String toString() {
+        return "{ " +
+                "voteId : " + voteId +
+                ", Email : " + person.getEmail() +
+                ", Play Package Strategy : " + playPackage.getStrategy() +
+                '}';
+    }
 }
