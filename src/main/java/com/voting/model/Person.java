@@ -11,7 +11,7 @@ public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int personId;
+    private int id;
 
     @Column
     private String email;

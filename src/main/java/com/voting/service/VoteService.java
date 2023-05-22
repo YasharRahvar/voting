@@ -13,4 +13,8 @@ public interface VoteService {
     GetVoteResponseDTO getVote(int id);
 
     List<GetVoteResponseDTO> getVotes();
+
+    List<GetVoteResponseDTO> findVotesByPerson(int personId);
+    List<GetVoteResponseDTO> findVotesByPlayPackage(int playPackageId);
+
 }

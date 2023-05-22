@@ -3,7 +3,6 @@ package com.voting.controller;
 import com.voting.dto.request.CreateVoteRequestDTO;
 import com.voting.dto.response.CreateVoteResponseDTO;
 import com.voting.dto.response.GetVoteResponseDTO;
-import com.voting.model.Vote;
 import com.voting.service.VoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +41,19 @@ public class VoteController {
         return new ResponseEntity<>(voteService.getVotes(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/votesByPersonId/{personId}")
+    @ResponseBody
+    public ResponseEntity<List<GetVoteResponseDTO>> votesByPersonId(@PathVariable int personId) {
+        return new ResponseEntity<>(voteService.findVotesByPerson(personId), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/votesByPlayPackageId/{playPackageId}")
+    @ResponseBody
+    public ResponseEntity<List<GetVoteResponseDTO>> votesByPlayPackageId(@PathVariable int playPackageId) {
+        return new ResponseEntity<>(voteService.findVotesByPlayPackage(playPackageId), HttpStatus.OK);
+    }
+
+
     @GetMapping(value = "/voteCounts")
     public String getMessage() {
 
@@ -53,9 +65,6 @@ public class VoteController {
             builder.append("\n");
             builder.append("\t");
         }
-/*        for (GetVoteResponseDTO vote: votes){
-            builder.append(vote.toString());
-        }*/
        return builder.toString();
 
     }

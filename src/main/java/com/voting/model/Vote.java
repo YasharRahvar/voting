@@ -11,7 +11,7 @@ public class Vote implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int voteId;
+    private int id;
 
     @ManyToOne
     private PlayPackage playPackage;

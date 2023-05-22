@@ -9,7 +9,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class GetPersonResponseDTO implements Serializable {
 
-    private static final long serialVersionUID = 7156526077883281623L;
     private int personId;
     private String email;
 

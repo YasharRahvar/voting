@@ -6,6 +6,7 @@ import com.voting.dto.response.GetPlayPackageResponseDTO;
 import com.voting.exception.PlayPackageNotFoundException;
 import com.voting.mapper.PlayPackageMapper;
 import com.voting.repository.PlayPackageRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +27,7 @@ public class PlayPackageServiceImpl implements PlayPackageService {
     }
 
     @Override
+    @Cacheable(cacheNames = "PlayPackage", key = "#id")
     public GetPlayPackageResponseDTO getPlayPackage(int id) {
         return playPackageMapper.PlayPackageToGetPlayPackageResponseDTO(playPackageRepository.findById(id).orElseThrow(()
                 -> new PlayPackageNotFoundException("Play Package with ID " + id + " Not Found")));

@@ -11,7 +11,7 @@ public class PlayPackage implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int PlayPackageId;
+    private int id;
 
     @Column
     private Strategy strategy;

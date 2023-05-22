@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Data
 public class GetPlayPackageResponseDTO implements Serializable {
+
     private int PlayPackageId;
     private Strategy strategy;
 

@@ -48,4 +48,17 @@ public class VoteServiceImpl implements VoteService {
         List<Vote> votes = voteRepository.findAll();
         return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<GetVoteResponseDTO> findVotesByPerson(int personId) {
+        List<Vote> votes = voteRepository.findByPersonId(personId);
+        return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
+    }
+
+    @Override
+    @Cacheable(cacheNames = "VotesByPlayPackage")
+    public List<GetVoteResponseDTO> findVotesByPlayPackage(int playPackageId) {
+        List<Vote> votes = voteRepository.findByPlayPackageId(playPackageId);
+        return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
+    }
 }
