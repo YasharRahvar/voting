@@ -32,7 +32,7 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     @Caching(evict = {
-            @CacheEvict(value="Vote", key = "#vote.id"),
+            @CacheEvict(value="Vote", key = "#CreateVoteRequestDTO.personId"),
             @CacheEvict(value="Votes", allEntries=true)})
     public CreateVoteResponseDTO createVote(CreateVoteRequestDTO createVoteRequestDTO) {
         return voteMapper.voteToVoteResponseDTO(voteRepository.save(voteMapper.createVoteRequestDTOtoVote(createVoteRequestDTO)));
