@@ -44,13 +44,16 @@ public class VoteServiceImpl implements VoteService {
     @Override
     @Cacheable(cacheNames = "Votes")
     public List<GetVoteResponseDTO> getVotes() {
-        LOGGER.info("Fetching from db");
+        LOGGER.info("Fetching from db all the votes");
         List<Vote> votes = voteRepository.findAll();
         return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
     }
 
     @Override
+    @Cacheable(cacheNames = "VotesByPersonId")
     public List<GetVoteResponseDTO> findVotesByPerson(int personId) {
+        LOGGER.info("Fetching from db VotesByPersonId");
+
         List<Vote> votes = voteRepository.findByPersonId(personId);
         return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
     }
@@ -58,6 +61,8 @@ public class VoteServiceImpl implements VoteService {
     @Override
     @Cacheable(cacheNames = "VotesByPlayPackage")
     public List<GetVoteResponseDTO> findVotesByPlayPackage(int playPackageId) {
+        LOGGER.info("Fetching from db VotesByPlayPackage");
+
         List<Vote> votes = voteRepository.findByPlayPackageId(playPackageId);
         return votes.stream().map(vote -> voteMapper.voteToGetVoteResponseDTO(vote)).collect(Collectors.toList());
     }
