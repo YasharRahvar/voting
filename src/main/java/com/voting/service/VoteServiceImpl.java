@@ -9,7 +9,9 @@ import com.voting.model.Vote;
 import com.voting.repository.VoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +31,9 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value="Vote", allEntries=true),
+            @CacheEvict(value="Votes", allEntries=true)})
     public CreateVoteResponseDTO createVote(CreateVoteRequestDTO createVoteRequestDTO) {
         return voteMapper.voteToVoteResponseDTO(voteRepository.save(voteMapper.createVoteRequestDTOtoVote(createVoteRequestDTO)));
     }
