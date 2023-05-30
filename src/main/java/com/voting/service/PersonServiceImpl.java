@@ -35,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Cacheable(cacheNames = "Persons", key = "#id")
     public GetPersonResponseDTO getPerson(int id) {
-        LOGGER.info("Fetching from db");
+        LOGGER.info("Fetching from db for person id: " + id);
         return personMapper.personToGetPersonResponseDTO(personRepository.findById(id).orElseThrow(()
                 -> new PersonNotFoundException("Person with ID " + id + " Not Found")));
     }
