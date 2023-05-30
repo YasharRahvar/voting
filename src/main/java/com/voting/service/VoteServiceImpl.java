@@ -57,7 +57,7 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    @Cacheable(cacheNames = "VotesByPersonId")
+    //@Cacheable(cacheNames = "VotesByPersonId")
     public List<GetVoteResponseDTO> findVotesByPerson(int personId) {
         LOGGER.info("Fetching from db VotesByPersonId");
 
@@ -66,7 +66,7 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    @Cacheable(cacheNames = "VotesByPlayPackage")
+    //@Cacheable(cacheNames = "VotesByPlayPackage")
     public List<GetVoteResponseDTO> findVotesByPlayPackage(int playPackageId) {
         LOGGER.info("Fetching from db VotesByPlayPackage");
 
